@@ -63,7 +63,7 @@ class arrays:
             newArr.append(array[j])
         return newArr
 
-    def dropRight(array: list, i: int) -> len:
+    def drop_right(array: list, i: int) -> len:
         """
         Similar to drop, but drops the ith element from the right
         ```py
@@ -99,7 +99,7 @@ class arrays:
             newArr.append(value)
         return newArr
 
-    def findIndex(array: list, fn) -> int:
+    def find_index(array: list, fn) -> int:
         """
         Returns the index of the first element in the array that matches the function
         ```py
@@ -117,7 +117,7 @@ class arrays:
                 break
         return index
 
-    def findLastIndex(array: list, fn) -> int:
+    def find_last_index(array: list, fn) -> int:
         """
         Similar to findIndex, but finds the last index of the first element that matches the function
         ```py
@@ -157,7 +157,7 @@ class arrays:
                 newArr.append(i)
         return newArr
 
-    def indexOf(array: list, value) -> int:
+    def index_of(array: list, value) -> int:
         """
         Returns the index of the first element in the array that matches the value
         ```py
@@ -195,7 +195,7 @@ class arrays:
         array.insert(index, value)
         return array
 
-    def fromPairs(array: list) -> dict:
+    def from_pairs(array: list) -> dict:
         """
         Converts a list of pairs into a dictionary
         ```py
