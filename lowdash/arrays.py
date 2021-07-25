@@ -67,7 +67,7 @@ class arrays:
         """
         Similar to drop, but drops the ith element from the right
         ```py
-        >>> arrays.dropRight([1, 2, 3, 4, 5], 2)
+        >>> arrays.drop_right([1, 2, 3, 4, 5], 2)
         >>> [1, 3, 4]
         ```
         """
@@ -103,7 +103,7 @@ class arrays:
         """
         Returns the index of the first element in the array that matches the function
         ```py
-        >>> arrays.findIndex([1, 2, 3, 4, 5], lambda x: x == 3)
+        >>> arrays.find_index([1, 2, 3, 4, 5], lambda x: x == 3)
         >>> 2
         """
         if not isinstance(array, list):
@@ -121,7 +121,7 @@ class arrays:
         """
         Similar to findIndex, but finds the last index of the first element that matches the function
         ```py
-        >>> arrays.findLastIndex([1, 2, 3, 4, 5], lambda x: x == 3)
+        >>> arrays.find_last_index([1, 2, 3, 4, 5], lambda x: x == 3)
         >>> 4
         ```
         """
@@ -161,7 +161,7 @@ class arrays:
         """
         Returns the index of the first element in the array that matches the value
         ```py
-        >>> arrays.indexOf([1, 2, 3, 4, 5], 3)
+        >>> arrays.index_of([1, 2, 3, 4, 5], 3)
         >>> 2
         ```
         """
@@ -199,7 +199,7 @@ class arrays:
         """
         Converts a list of pairs into a dictionary
         ```py
-        >>> arrays.fromPairs([("a", 1), ("b", 2), ("c", 3)])
+        >>> arrays.from_pairs([("a", 1), ("b", 2), ("c", 3)])
         >>> {"a": 1, "b": 2, "c": 3}
         ```
         """
