@@ -9,7 +9,7 @@ class arrays:
         """
         if(not isinstance(array, list)):
             raise TypeError("Expected list")
-        
+
         return [array[i:i + size] for i in range(0, len(array), size)]
 
     def compact(array: list) -> list:
@@ -425,3 +425,27 @@ class arrays:
         if(not isinstance(array, list)):
             raise TypeError("Expected list")
         return list(set([i for i in array if i not in args]).union(set(arrays.flatten([i for i in args if i not in array]))))
+
+    def xor(array: list, *args) -> list:
+        """
+        Returns a list of elements that are in one of the arrays and not in both
+        ```py
+        >>> arrays.xor([1, 2, 3, 4, 5], [2, 3, 4, 5, 6])
+        >>> [1, 6]
+        ```
+        """
+        if(not isinstance(array, list)):
+            raise TypeError("Expected list")
+        return list(set([i for i in array if i not in args]).symmetric_difference(set(arrays.flatten([i for i in args if i not in array]))))
+
+    def zip(array: list, *args) -> list:
+        """
+        Returns a list of tuples of elements from the arrays
+        ```py
+        >>> arrays.zip([1, 2, 3, 4, 5], [6, 7, 8, 9, 10])
+        >>> [(1, 6), (2, 7), (3, 8), (4, 9), (5, 10)]
+        ```
+        """
+        if(not isinstance(array, list)):
+            raise TypeError("Expected list")
+        return list(zip(array, *args))
