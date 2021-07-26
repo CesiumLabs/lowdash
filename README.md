@@ -15,8 +15,8 @@ pip install lowdash
 To get started you can use the following code:
 
 ```python
-from lowdash import *
-arrays.compact(['a', '', 'b', None, 'c'])
+from lowdash.arrays import *
+compact(['a', '', 'b', None, 'c'])
 # Output : ['a', 'b', 'c']
 ```
 
