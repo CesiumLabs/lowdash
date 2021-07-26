@@ -1,4 +1,17 @@
 class arrays:
+    def chunks(array: list, size: int) -> list:
+        """
+        Splits an array into chunks of size
+        ```py
+        >>> arrays.chunks([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], 3)
+        >>> [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+        ```
+        """
+        if(not isinstance(array, list)):
+            raise TypeError("Expected list")
+        
+        return [array[i:i + size] for i in range(0, len(array), size)]
+
     def compact(array: list) -> list:
         """Removes all Falsey values from an array
         ```py
