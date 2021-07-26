@@ -8,13 +8,7 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        newArr = list()
-        for i in array:
-            if (i == 0 or i == False or i == None):
-                continue
-            else:
-                newArr.append(i)
-        return newArr
+        return [i for i in array if i]
 
     def concat(array: list, *args) -> list:
         """
@@ -26,9 +20,7 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        for i in args:
-            array.append(i)
-        return array
+        return array + arrays.flatten(list(args))
 
     def difference(array: list, *args) -> list:
         """
@@ -58,10 +50,10 @@ class arrays:
             raise ValueError("Index must be greater than 0")
         if i > len(array):
             raise ValueError("Index must be less than length of list")
-        newArr = list()
+        new_arr = list()
         for j in range(i, len(array)):
-            newArr.append(array[j])
-        return newArr
+            new_arr.append(array[j])
+        return new_arr
 
     def dropRight(array: list, i: int) -> len:
         """
@@ -77,27 +69,24 @@ class arrays:
             raise ValueError("Index must be greater than 0")
         if i > len(array):
             raise ValueError("Index must be less than length of list")
-        newArr = list()
+        new_arr = list()
         for j in range(0, i):
-            newArr.append(array[j])
-        return newArr
+            new_arr.append(array[j])
+        return new_arr
 
     def fill(array: list, value, start: int, end: int) -> list:
         """
         Fills the array with the value passed in
         ```py
-        >>> arrays.fill([1, 2, 3, 4], 0, 2, 4)
-        >>> [0, 1, 2, 3, 4]
+        >>> arrays.fill([0,1,3,4,5],8,0,2)
+        >>> [8, 8, 3, 4, 5]
         ```
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
         if(not end):
             end = len(array)
-        newArr = []
-        for i in range(start, end):
-            newArr.append(value)
-        return newArr
+        return array[:start] + [value] * (end - start) + array[end:]
 
     def findIndex(array: list, fn) -> int:
         """
@@ -146,16 +135,16 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        newArr = []
+        new_arr = []
         for i in array:
             if isinstance(i, list):
                 tempArr = []
                 for j in range(len(i)):
                     tempArr.append(i[j])
-                newArr.extend(tempArr)
+                new_arr.extend(tempArr)
             else:
-                newArr.append(i)
-        return newArr
+                new_arr.append(i)
+        return new_arr
 
     def indexOf(array: list, value) -> int:
         """
@@ -169,12 +158,10 @@ class arrays:
             raise TypeError("Expected list")
         if(not value):
             raise ValueError("Value must be defined")
-        index = -1
-        for i in range(len(array)):
-            if(array[i] == value):
-                index = i
-                break
-        return index
+        try:
+            return array.index(value)
+        except ValueError:
+            return -1
 
     def insert(array: list, index: int, value) -> list:
         """
@@ -186,7 +173,7 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        if(not index):
+        if(not index and index != 0):
             raise ValueError("Index must be defined")
         if(index < 0):
             raise ValueError("Index must be greater than 0")
@@ -239,10 +226,12 @@ class arrays:
     def intersection(array: list, *args) -> list:
         """
         Returns the intersection of the arrays passed in
-        TODO not made yet feel free to make it for me :) here -> https://github.com/abh80/lowdash
+        ```py
+        >>> arrays.intersection([1, 2, 3, 4, 5], [2, 3, 4, 5, 6])
+        >>> [2, 3, 4, 5]
+        ```
         """
-        # TODO
-        return array
+        return list(set([i for i in array if i not in args]).union(set(arrays.flatten([i for i in args if i not in array]))))
 
     def join(array: list, delimiter: str) -> str:
         """
@@ -268,7 +257,7 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        return array[len(array)-1]
+        return array[:-1]
 
     def nth(array: list, index: int):
         """
@@ -294,11 +283,7 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        newArr = []
-        for i in array:
-            if i not in args:
-                newArr.append(i)
-        return newArr
+        return [i for i in array if i not in args]
 
     def remove(array: list, fn) -> list:
         """
@@ -311,11 +296,8 @@ class arrays:
             raise TypeError("Expected list")
         if(not fn):
             raise ValueError("Function must be defined")
-        newArr = []
-        for i in array:
-            if(not fn(i)):
-                newArr.append(i)
-        return newArr
+
+        return [i for i in array if fn(i) == False]
 
     def reverse(array: list) -> list:
         """
@@ -356,7 +338,7 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        return array[1:len(array)]
+        return array[1:]
 
     def take(array: list, till: int) -> list:
         """
@@ -370,7 +352,7 @@ class arrays:
             raise TypeError("Expected list")
         if(not till):
             till = 1
-        return array[0:till]
+        return array[:till]
 
     def uniq(array: list) -> list:
         """
@@ -382,11 +364,8 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        newArr = []
-        for i in array:
-            if i not in newArr:
-                newArr.append(i)
-        return newArr
+        unique = set()
+        return [i for i in array if i not in unique and not unique.add(i)]
 
     def without(array: list, *args) -> list:
         """
@@ -398,8 +377,38 @@ class arrays:
         """
         if not isinstance(array, list):
             raise TypeError("Expected list")
-        newArr = []
-        for i in array:
-            if i not in args:
-                newArr.append(i)
-        return newArr
+        return [i for i in array if i not in args and i not in args]
+
+    def shift(array: list) -> list:
+        """
+        Similar to `tail` function removes the first element of the array
+        ```py
+        >>> arrays.shift([1, 2, 3, 4, 5])
+        >>> [2, 3, 4, 5]
+        ```
+        """
+        return arrays.tail(array)
+
+    def unshift(array: list, value) -> list:
+        """
+        Adds an element to the beginning of the array
+        ```py
+        >>> arrays.unshift([1, 2, 3, 4, 5], 6)
+        >>> [6, 1, 2, 3, 4, 5]
+        ```
+        """
+        if not isinstance(array, list):
+            raise TypeError("Expected list")
+        return arrays.insert(array, 0, value)
+
+    def union(array: list, *args) -> list:
+        """
+        Returns a list of union elements of the array and arguments passed in
+        ```py
+        >>> arrays.union([1, 2, 3, 4, 5], [2, 3, 4, 5, 6])
+        >>> [1, 2, 3, 4, 5, 6]
+        ```
+        """
+        if(not isinstance(array, list)):
+            raise TypeError("Expected list")
+        return list(set([i for i in array if i not in args]).union(set(arrays.flatten([i for i in args if i not in array]))))
