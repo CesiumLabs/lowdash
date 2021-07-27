@@ -12,7 +12,7 @@ def chunks(array: list, size: int) -> list:
     if not isinstance(array, list):
         raise TypeError("[lowdash.chunks]: Expected list for parameter array.")
 
-    return [array[i:i + size] for i in range(0, len(array), size)]
+    return [array[i : i + size] for i in range(0, len(array), size)]
 
 
 def compact(array: list) -> list:
@@ -23,8 +23,7 @@ def compact(array: list) -> list:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.compact]: Expected list for parameter array.")
+        raise TypeError("[lowdash.compact]: Expected list for parameter array.")
 
     return [i for i in array if i]
 
@@ -53,7 +52,8 @@ def difference(array_a: list, array_b: list) -> list:
     """
     if (not isinstance(array_a, list)) and (not isinstance(array_b, list)):
         raise TypeError(
-            "[lowdash.difference]: Expected list for parameter array_a and array_b.")
+            "[lowdash.difference]: Expected list for parameter array_a and array_b."
+        )
 
     return [i for i in array_a if i not in flatten(list(array_b))]
 
@@ -79,13 +79,13 @@ def drop_right(array: list, n: int) -> len:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.drop_right]: Expected list for parameter array.")
+        raise TypeError("[lowdash.drop_right]: Expected list for parameter array.")
 
     length = len(array)
     if n < 0 > length:
         raise ValueError(
-            "[lowdash.drop_right]: Index must be greater than 0 and less than the length of the array.")
+            "[lowdash.drop_right]: Index must be greater than 0 and less than the length of the array."
+        )
 
     return array.pop(length - n)
 
@@ -109,14 +109,15 @@ def fill(array: list, value, start: int, end: int) -> list:
     if end < 0:
         raise ValueError("[lowdash.fill]: End must be greater than 0.")
     if start > end:
-        raise ValueError(
-            "[lowdash.fill]: Start must be less than or equal to end.")
+        raise ValueError("[lowdash.fill]: Start must be less than or equal to end.")
     if len(array) < end:
         raise ValueError(
-            "[lowdash.fill]: End must be greater than or equal to length of array.")
+            "[lowdash.fill]: End must be greater than or equal to length of array."
+        )
     if len(array) < start:
         raise ValueError(
-            "[lowdash.fill]: Start must be less than or equal to length of array.")
+            "[lowdash.fill]: Start must be less than or equal to length of array."
+        )
     return array[:start] + [value] * (end - start) + array[end:]
 
 
@@ -129,8 +130,7 @@ def flatten(array: list) -> list:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.flatten]: Expected list for parameter array.")
+        raise TypeError("[lowdash.flatten]: Expected list for parameter array.")
 
     new_list = list()
     for i in array:
@@ -150,8 +150,7 @@ def find_index(array: list, fn) -> int:
     >>> 2
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.find_index]: Expected list for parameter array.")
+        raise TypeError("[lowdash.find_index]: Expected list for parameter array.")
 
     index = -1
 
@@ -172,8 +171,7 @@ def find_last_index(array: list, fn) -> int:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.find_last_index]: Expected list for parameter array.")
+        raise TypeError("[lowdash.find_last_index]: Expected list for parameter array.")
 
     index = -1
     for i in range(len(array)):
@@ -193,8 +191,7 @@ def index_of(array: list, value) -> int:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.index_of]: Expected list for parameter array.")
+        raise TypeError("[lowdash.index_of]: Expected list for parameter array.")
 
     try:
         return array.index(value)
@@ -226,8 +223,7 @@ def from_pairs(array: list) -> dict:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.from_pairs]: Expected list for parameter array.")
+        raise TypeError("[lowdash.from_pairs]: Expected list for parameter array.")
 
     pairs = {}
     for i in range(len(array)):
@@ -344,8 +340,7 @@ def reverse(array: list) -> list:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.reverse]: Expected list for parameter array.")
+        raise TypeError("[lowdash.reverse]: Expected list for parameter array.")
 
     new_list = list(array).reverse()
     return new_list
@@ -366,8 +361,7 @@ def slice(array: list, start: int, end: int) -> list:
     if start > end:
         raise ValueError("[lowdash.slice]: Start must be less than end.")
     if start > len(array) - 1:
-        raise ValueError(
-            "[lowdash.slice]: Start must be less than length of array.")
+        raise ValueError("[lowdash.slice]: Start must be less than length of array.")
     return array[start:end]
 
 
@@ -425,8 +419,7 @@ def without(array: list, *args) -> list:
     ```
     """
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.without]: Expected list for parameter in array.")
+        raise TypeError("[lowdash.without]: Expected list for parameter in array.")
 
     return [i for i in array if i not in args and i not in args]
 
@@ -497,8 +490,7 @@ def xor(array: list, *args) -> list:
 
 def shuffle(array: list) -> list:
     if not isinstance(array, list):
-        raise TypeError(
-            "[lowdash.shuffle]: Expected list for parameter array.")
+        raise TypeError("[lowdash.shuffle]: Expected list for parameter array.")
 
     random.shuffle(array)
     return array
