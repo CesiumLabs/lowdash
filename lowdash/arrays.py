@@ -1,3 +1,6 @@
+import random
+
+
 def chunks(array: list, size: int) -> list:
     """
     Splits an array into chunks of size
@@ -490,6 +493,15 @@ def xor(array: list, *args) -> list:
             set(flatten([i for i in args if i not in array]))
         )
     )
+
+
+def shuffle(array: list) -> list:
+    if not isinstance(array, list):
+        raise TypeError(
+            "[lowdash.shuffle]: Expected list for parameter array.")
+
+    random.shuffle(array)
+    return array
 
 
 def zip(array: list, *args) -> list:
