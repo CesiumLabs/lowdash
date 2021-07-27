@@ -1,9 +1,9 @@
 import random
 
-from ._utils import args_parser
+from ._utils import args_type_checker
 
 
-@args_parser
+@args_type_checker
 def chunks(array: list, size: int) -> list:
     """
     Splits an array into chunks of size
@@ -15,7 +15,7 @@ def chunks(array: list, size: int) -> list:
     return [array[i : i + size] for i in range(0, len(array), size)]
 
 
-@args_parser
+@args_type_checker
 def compact(array: list) -> list:
     """Removes all Falsey values from an array
     ```py
@@ -26,7 +26,7 @@ def compact(array: list) -> list:
     return [i for i in array if i]
 
 
-@args_parser
+@args_type_checker
 def concat(array: list, *args) -> list:
     """
     Concatenates all Arrays passed to the function
@@ -38,7 +38,7 @@ def concat(array: list, *args) -> list:
     return array + flatten(list(args))
 
 
-@args_parser
+@args_type_checker
 def difference(array_a: list, array_b: list) -> list:
     """
     Removes all values that are in the args from the array
@@ -50,7 +50,7 @@ def difference(array_a: list, array_b: list) -> list:
     return [i for i in array_a if i not in flatten(list(array_b))]
 
 
-@args_parser
+@args_type_checker
 def drop(array: list, n: int) -> list:
     """
     Removes the nth element from the array
@@ -63,7 +63,7 @@ def drop(array: list, n: int) -> list:
     return array
 
 
-@args_parser
+@args_type_checker
 def drop_right(array: list, n: int) -> len:
     """
     Similar to drop, but drops the nth element from the right
@@ -81,7 +81,7 @@ def drop_right(array: list, n: int) -> len:
     return array.pop(length - n)
 
 
-@args_parser
+@args_type_checker
 def fill(array: list, value, start: int, end: int) -> list:
     """
     Fills the array with the value passed in
@@ -107,7 +107,7 @@ def fill(array: list, value, start: int, end: int) -> list:
     return array[:start] + [value] * (end - start) + array[end:]
 
 
-@args_parser
+@args_type_checker
 def flatten(array: list) -> list:
     """
     Flattens a list of lists into a single list
@@ -126,7 +126,7 @@ def flatten(array: list) -> list:
     return new_list
 
 
-@args_parser
+@args_type_checker
 def find_index(array: list, fn) -> int:
     """
     Returns the index of the first element in the array that matches the function
@@ -144,7 +144,7 @@ def find_index(array: list, fn) -> int:
     return index
 
 
-@args_parser
+@args_type_checker
 def find_last_index(array: list, fn) -> int:
     """
     Similar to findIndex, but finds the last index of the first element that matches the function
@@ -162,7 +162,7 @@ def find_last_index(array: list, fn) -> int:
     return index
 
 
-@args_parser
+@args_type_checker
 def index_of(array: list, value) -> int:
     """
     Returns the index of the first element in the array that matches the value
@@ -177,7 +177,7 @@ def index_of(array: list, value) -> int:
         return -1
 
 
-@args_parser
+@args_type_checker
 def insert(array: list, index: int, value) -> list:
     """
     Inserts the value into the array at the index passed in
@@ -193,7 +193,7 @@ def insert(array: list, index: int, value) -> list:
     return array
 
 
-@args_parser
+@args_type_checker
 def from_pairs(array: list) -> dict:
     """
     Converts a list of pairs into a dictionary
@@ -210,7 +210,7 @@ def from_pairs(array: list) -> dict:
     return pairs
 
 
-@args_parser
+@args_type_checker
 def head(array: list):
     """
     Returns the first element of the array
@@ -225,7 +225,7 @@ def head(array: list):
     return array[0]
 
 
-@args_parser
+@args_type_checker
 def intersection(array: list, *args) -> list:
     """
     Returns the intersection of the arrays passed in
@@ -241,7 +241,7 @@ def intersection(array: list, *args) -> list:
     )
 
 
-@args_parser
+@args_type_checker
 def join(array: list, delimiter: str) -> str:
     """
     Joins the elements of the array into a string
@@ -253,7 +253,7 @@ def join(array: list, delimiter: str) -> str:
     return delimiter.join(array)
 
 
-@args_parser
+@args_type_checker
 def last(array: list):
     """
     Returns the last element of the array
@@ -265,7 +265,7 @@ def last(array: list):
     return array[:-1]
 
 
-@args_parser
+@args_type_checker
 def nth(array: list, index: int):
     """
     Returns the nth element of the array
@@ -277,7 +277,7 @@ def nth(array: list, index: int):
     return array[index]
 
 
-@args_parser
+@args_type_checker
 def pull(array: list, *args) -> list:
     """
     Removes the elements of the array passed in from the array
@@ -289,7 +289,7 @@ def pull(array: list, *args) -> list:
     return [i for i in array if i not in args]
 
 
-@args_parser
+@args_type_checker
 def remove(array: list, fn) -> list:
     """
     Removes the elements of the array that match the function passed in
@@ -300,7 +300,7 @@ def remove(array: list, fn) -> list:
     return [i for i in array if fn(i) == False]
 
 
-@args_parser
+@args_type_checker
 def reverse(array: list) -> list:
     """
     Reverses an array
@@ -313,7 +313,7 @@ def reverse(array: list) -> list:
     return new_list
 
 
-@args_parser
+@args_type_checker
 def slice(array: list, start: int, end: int) -> list:
     """
     Returns a slice of the array
@@ -331,7 +331,7 @@ def slice(array: list, start: int, end: int) -> list:
     return array[start:end]
 
 
-@args_parser
+@args_type_checker
 def tail(array: list) -> list:
     """
     Removes the first element of the array
@@ -346,7 +346,7 @@ def tail(array: list) -> list:
     return array[1:]
 
 
-@args_parser
+@args_type_checker
 def take(array: list, till: int = 0) -> list:
     """
     Returns a slice of the array
@@ -358,7 +358,7 @@ def take(array: list, till: int = 0) -> list:
     return array[:till]
 
 
-@args_parser
+@args_type_checker
 def uniq(array: list) -> list:
     """
     Returns a list of unique elements of the array
@@ -370,7 +370,7 @@ def uniq(array: list) -> list:
     return list(set(array))
 
 
-@args_parser
+@args_type_checker
 def without(array: list, *args) -> list:
     """
     Removes the elements of the array passed in from the array
@@ -382,7 +382,7 @@ def without(array: list, *args) -> list:
     return [i for i in array if i not in args and i not in args]
 
 
-@args_parser
+@args_type_checker
 def shift(array: list) -> list:
     """
     Similar to `tail` function removes the first element of the array
@@ -397,7 +397,7 @@ def shift(array: list) -> list:
     return array
 
 
-@args_parser
+@args_type_checker
 def unshift(array: list, value) -> list:
     """
     Adds an element to the beginning of the array
@@ -409,7 +409,7 @@ def unshift(array: list, value) -> list:
     return array.insert(0, value)
 
 
-@args_parser
+@args_type_checker
 def union(array: list, *args) -> list:
     """
     Returns a list of union elements of the array and arguments passed in
@@ -425,7 +425,7 @@ def union(array: list, *args) -> list:
     )
 
 
-@args_parser
+@args_type_checker
 def xor(array: list, *args) -> list:
     """
     Returns a list of elements that are in one of the arrays and not in both
@@ -441,13 +441,13 @@ def xor(array: list, *args) -> list:
     )
 
 
-@args_parser
+@args_type_checker
 def shuffle(array: list) -> list:
     random.shuffle(array)
     return array
 
 
-@args_parser
+@args_type_checker
 def zip(array: list, *args) -> list:
     """Returns a list of tuples of the elements of the arrays and arguments passed in
     Args:
