@@ -1,4 +1,5 @@
 import random
+
 from ._utils import args_parser
 
 
@@ -36,6 +37,7 @@ def concat(array: list, *args) -> list:
     """
     return array + flatten(list(args))
 
+
 @args_parser
 def difference(array_a: list, array_b: list) -> list:
     """
@@ -46,6 +48,7 @@ def difference(array_a: list, array_b: list) -> list:
     ```
     """
     return [i for i in array_a if i not in flatten(list(array_b))]
+
 
 @args_parser
 def drop(array: list, n: int) -> list:
@@ -139,6 +142,7 @@ def find_index(array: list, fn) -> int:
             break
 
     return index
+
 
 @args_parser
 def find_last_index(array: list, fn) -> int:
@@ -352,6 +356,7 @@ def take(array: list, till: int = 0) -> list:
     ```
     """
     return array[:till]
+
 
 @args_parser
 def uniq(array: list) -> list:
