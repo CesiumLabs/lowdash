@@ -2,7 +2,6 @@ import random
 
 from ._utils import args_type_checker
 
-
 @args_type_checker
 def chunks(array: list, size: int) -> list:
     """

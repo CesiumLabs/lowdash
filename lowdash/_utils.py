@@ -2,7 +2,6 @@ from typing import TypeVar
 
 _T = TypeVar("_T")
 
-
 def args_type_checker(func: _T) -> _T:
     def predicate(*args, **kwargs):
         annotations = func.__annotations__.copy()
