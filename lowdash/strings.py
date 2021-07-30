@@ -1,8 +1,6 @@
 from .arrays import chunks as array_chunks
 from .arrays import shuffle
-
 from ._utils import args_type_checker
-
 
 @args_type_checker
 def mock(string: str) -> str:
