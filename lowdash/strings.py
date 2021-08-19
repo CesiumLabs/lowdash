@@ -7,11 +7,7 @@ from ._utils import args_type_checker
 @args_type_checker
 def mock(string: str) -> str:
     chunk = list(string)
-    for i in range(len(chunk)):
-        if i % 2 == 0:
-            chunk[i] = upper(chunk[i])
-
-    return "".join(chunk)
+    return "".join([chunk[i].upper() if i % 2 else chunk[i].lower() for i in range(len(chunk))])
 
 
 @args_type_checker
